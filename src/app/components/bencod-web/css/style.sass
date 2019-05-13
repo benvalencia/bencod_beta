@@ -1,0 +1,1045 @@
+*:before,*,*:after
+    margin: 0
+    padding: 0
+    outline: 0
+    box-sizing: border-box
+html, body
+    height: 100%
+    font-family: 'Open Sans', sans-serif
+h1,h2,h3
+    margin: 0!important
+    text-transform: uppercase
+    letter-spacing: -0.08em
+p
+    letter-spacing: -0.0125em
+section
+    padding: 6em 0
+.clear
+    clear: both
+.scroll
+    overflow: hidden
+.hiden
+    display: none
+    overflow: hidden
+.hideme
+    opacity: 0
+.error
+    border: solid 1px #f44!important
+$fullH: 100vh    
+//Menu & Video's Letters
+$sizeBrand:2em
+$weightBrand: 100
+$sizeNav: 1.1em
+$weightNav: 100
+$sizeLetter: 1em
+
+//Skills
+$skillOne: 95%
+$skillTwo: 90%
+$skillThree: 90%
+$skillFour: 85%
+$skillFive: 70%
+$skillSix: 70%
+//Loading...
+@import url(https://fonts.googleapis.com/css?family=Quattrocento+Sans)
+@mixin position-center($text-align: center) 
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    margin: auto
+    text-align: $text-align
+.loading
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: #000
+    z-index: 99999
+    overflow: hidden
+.loading-text
+    @include position-center
+    width: 100%
+    height: 100px
+    line-height: 100px
+    span
+        display: inline-block
+        margin: 0 5px
+        color: #fff
+        font-family: 'Quattrocento Sans', sans-serif
+        @for $i from 0 through 6
+            &:nth-child(#{$i + 1})
+                filter: blur(0px)
+                animation: blur-text 1.5s (#{$i/5})+s infinite linear alternate
+@keyframes blur-text
+    0% 
+        filter: blur(0px)
+    100%
+        filter: blur(4px)
+//Header & Menu
+header
+    font-family: 'Abel', sans-serif
+.section-container-nav
+    position: fixed
+    mix-blend-mode: difference
+    z-index: 99
+.container-brand
+    position: relative
+    top: 15px
+    left: 15px
+    &>h1
+        font-size: $sizeBrand!important
+        font-weight: $weightBrand!important
+        color: #fff
+#container-nav
+    z-index: 100
+    ul
+        position: fixed
+        top: 60px
+        right: 15px
+        height: $fullH
+        visibility: hidden
+        pointer-events: none
+        list-style: none
+        width: 35px
+        li
+            font-size: $sizeNav
+            font-weight: $weightNav
+            text-transform: uppercase
+            letter-spacing: 2px
+            padding: 0.75em 0
+            writing-mode: vertical-lr
+            a
+                text-decoration: none
+                color: #fff
+                
+    &.active ul
+        visibility: visible
+        pointer-events: initial
+        transition-delay: 0.2s
+.nav-icon
+    outline: none!important
+    border: none
+    appearance: none
+    background: transparent
+    cursor: pointer
+    display: inline-block
+    height: 45px
+    position: fixed
+    top: 15px
+    right: 15px
+    transform: background 0.3s
+    width: 50px
+    span
+        position: absolute
+        top: 15px
+        left: 5px
+        background: #fff
+        display: block
+        height: 3px
+        right: 5px
+        transition: transform 0.3s
+        &:before,
+        &:after
+            width: 100%
+            height: 3px
+            background: #fff
+            content: ''
+            display: block
+            left: 0
+            position: absolute
+        &:before
+            top: -8px
+        &:after
+            bottom: -8px
+    .active & span
+        transform: rotate(90deg)
+//Video        
+.section-container-vid
+    height: $fullH
+    position: relative
+    z-index: -1
+    top: 0
+    left: 0
+.container-vid
+    
+    height: $fullH
+    position: fixed
+    width: 100%
+    &>video
+        width: 100%
+        object-fit: cover
+        height: $fullH
+.container-vid-shade
+    opacity: 0
+    background: rgba(0,0,0,.8)
+    z-index: 3
+    height: $fullH
+    position: fixed
+    width: 100%
+.section-main
+    background-color: #fff
+    padding-top: 5%
+    padding-bottom: 10%
+.section-one,.section-two,.section-three
+    max-width: 1200px
+    margin: auto
+    padding-bottom: 10%
+//Letters     
+svg.intro 
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    .text 
+        display: none
+    &.go
+        .text
+            font-family: Arial, sans-serif
+            font-size: $sizeLetter
+            text-transform: uppercase
+            display: block
+        .text-stroke 
+            fill: none
+            stroke: #000
+            stroke-width: 2.8px
+            stroke-dashoffset: -900
+            stroke-dasharray: 900
+            stroke-linecap: butt
+            stroke-linejoin: round
+            animation: dash 4s ease-in-out forwards
+        .text-stroke:nth-child(2) 
+            animation-delay: .8s
+        .text-stroke-2 
+            stroke: #f6bdfa
+            animation-delay: 2s
+
+@keyframes dash 
+    100% 
+        stroke-dashoffset: 0
+//Titles
+#about h2, .section-two h2, #portfolio h2, .container > h2,.section-three h2
+    padding: 20% 0 3% 0
+    display: block
+    color: #5B5A60 
+    text-align: center
+    font-size: 2em
+    font-weight: 100
+//About
+#about 
+    max-width: 100%
+    background: #fff
+    color: black
+    padding-bottom: 10%
+
+.skill-right p 
+    line-height: 150%
+    color: rgba(26, 26, 26, .6)
+
+#about img 
+    display: block
+    margin: 0 25%
+    width: 50%
+    margin-bottom: 20%
+    box-shadow: rgba(26, 45, 63, 0.37) 6px 6px 23px 0px
+    
+//Skills
+.skills 
+    max-width: 100%
+    background: #fff
+    padding: 0 8%
+    text-align: center
+    display: flex
+    flex-wrap: wrap-reverse
+.skills ul 
+    padding-top: 10%
+.box 
+    height: 1.5em
+    margin: 2% 0
+    width: 100%
+    color: #2D2D2D
+    border: .05em solid #2D2D2D
+    border-radius: 2px
+    display: inline-block
+    div:first-child
+        color: #f1f1f1
+        float: left
+        padding-left: 10px
+    div:nth-child(2)
+        color: #f1f1f1
+        font-size: 1.1em
+        mix-blend-mode: difference
+        float: right
+        padding-right: 10px
+    div:first-child, div:nth-child(2)
+        position: relative    
+        top: 50%
+        transform: translateY(-50%)
+.one 
+    height: 1.4em
+    width: $skillOne
+    background: #2D2D2D
+    display: block
+.two 
+    height: 1.4em
+    width: $skillTwo
+    background: #2D2D2D
+    display: block
+.three 
+    height: 1.4em
+    width: $skillThree
+    background: #2D2D2D
+    display: block
+.four 
+    height: 1.4em
+    width: $skillFour
+    background: #2D2D2D
+    display: block
+.five 
+    height: 1.4em
+    width: $skillFive
+    background: #2D2D2D
+    display: block
+.six 
+    height: 1.4em
+    width: $skillSix
+    background: #2D2D2D
+    display: block
+    
+.skill-right
+    padding-bottom: 30px
+    &>div
+        font-size: 2em
+        margin-top: 15px
+        &>a
+            text-decoration: none
+            margin-right: 25px
+            color: black
+            &:last-child
+                margin-right: 0px
+.skill-column
+    margin-top: 15%
+    text-align: center
+    display: flex
+.skill-columns
+    width: 33.33%
+    padding: 0 5%
+    &>div
+        font-size: 4em
+        padding-bottom: 10%
+    &>p
+        font-size: 1em
+        line-height: 1.5em
+        color: rgba(26,26,26,0.6)
+//Botton 
+.section-download>button,.section-download>a
+    padding: 20px 40px
+    background: none
+    border: none
+    position: relative
+    color: #000!important
+    text-transform: uppercase
+    font-weight: bold
+    letter-spacing: 3px
+    cursor: pointer
+    text-decoration: none
+    &:after, &:before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        border: 2px solid #000
+        transition: transform .2s 
+    &:after
+        transform: translate(3px, 3px)	
+    &:before
+        transform: translate(-3px, -3px)
+    &:hover
+        &:after, &:before
+            transform: translate(0)    
+//Projects
+#icons 
+    display: none
+
+.header-wrapper 
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    padding: 2rem 4rem
+    z-index: 20
+
+.header-wrapper .header 
+    position: relative
+    display: block
+    width: 100%
+    height: 6rem
+
+.header-wrapper .menu-hamburger 
+    position: relative
+    width: 1.3rem
+    display: inline-block
+    vertical-align: middle
+    background: black
+    height: 0.2rem
+    cursor: pointer
+
+.header-wrapper .menu-hamburger::before 
+    content: ""
+    width: 1.3rem
+    height: 0.2rem
+    background: black
+    position: absolute
+    top: -0.4rem
+
+.header-wrapper .menu-hamburger::after 
+    content: ""
+    width: 1.3rem
+    height: 0.2rem
+    background: black
+    position: absolute
+    top: 0.4rem
+
+.header-wrapper .menu-txt 
+    position: relative
+    display: inline-block
+    vertical-align: middle
+    margin-left: 0.5rem
+    text-transform: uppercase
+    cursor: pointer
+
+.header-wrapper .logo-wrapper 
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.header-wrapper .logo 
+    display: block
+    font-size: 2rem
+    font-weight: bold
+    margin-top: 3rem
+    line-height: 1
+    font-weight: 600
+
+.header-wrapper .logo span 
+    display: block
+
+
+.number-wrapper 
+    position: absolute
+    height: 100%
+    width: 12rem
+    z-index: 10
+
+.number-wrapper .number-count 
+    position: relative
+    display: inline-block
+    top: 50%
+    transform: translateY(-50%)
+
+.number-wrapper .number 
+    position: relative
+    font-family: 'Montserrat', sans-serif
+    font-size: 12rem
+    color: #efefef
+    margin-left: -5rem
+    font-weight: 700
+
+
+.nav-wrapper 
+    position: absolute
+    height: 100%
+    width: 12rem
+    padding: 0 4rem
+    top: 0
+    right: 0
+    text-align: center
+    z-index: 10
+
+.nav-wrapper .nav-arrows 
+    position: relative
+    display: inline-block
+    top: 50%
+    transform: translateY(-50%)
+
+.nav-wrapper .nav-up 
+    opacity: 0
+
+.nav-wrapper .nav-up, .nav-wrapper .nav-down 
+    width: 2rem
+    height: 3rem
+    cursor: pointer
+
+.nav-wrapper .nav-up svg, .nav-wrapper .nav-down svg 
+    fill: #666666
+    width: 100%
+    max-height: 100%
+
+.nav-wrapper .nav-up svg:hover, .nav-wrapper .nav-down svg:hover 
+    fill: black
+
+.nav-wrapper .nav-up 
+    transform: rotate(180deg)
+
+.nav-wrapper .nav-line 
+    width: 100%
+    height: 0.1rem
+    background: black
+    margin: 1rem 0
+    background: #666666
+
+
+.slider-content 
+    margin-top: 10%!important
+    position: relative
+    max-height: 850px
+    max-width: 112rem
+    min-width: 480px
+    background: #fff
+    margin: 0 auto
+    overflow: hidden
+    box-shadow: 0 0 35px 20px rgba(79, 69, 66, 0.2)
+
+.slider-content .slide 
+    position: absolute
+    width: 100%
+    height: 850px
+
+.slider-content .slide:after 
+    content: ""
+    display: table
+    clear: both
+
+.slider-content .slide:first-child .txt-wrapper span.copy 
+    opacity: 1
+
+.slider-content .slide:nth-child(odd) .img 
+    margin-left: 50%
+    height: 100%
+    transform: translateY(-100%)
+
+.slider-content .slide:nth-child(odd) .txt 
+    transform: translateY(100%)
+
+.slider-content .slide:nth-child(even) .img
+    height: 100%
+    transform: translateY(100%)
+
+.slider-content .slide:nth-child(even) .txt 
+    margin-left: 45%
+    transform: translateY(-100%)
+
+.slider-content .slide.active 
+    position: absolute
+    z-index: 6
+
+.slider-content .slide.active .img, .slider-content .slide.active .txt 
+    transform: translateY(0)
+
+
+.slider-container 
+    position: relative
+    height: 65rem
+    overflow: hidden
+
+.slider-container:after 
+    content: ""
+    display: table
+    clear: both
+
+.slider-container .slide-content 
+    position: absolute
+    display: block
+    width: 50%
+    transition: transform 0.3s ease
+    transition-delay: 0.15s
+
+.slider-container .slide-content.txt 
+    display: table
+    padding: 15rem 10rem
+    background: white
+
+.slider-container .slide-content .txt-wrapper 
+    position: relative
+    display: table-cell
+    vertical-align: middle
+
+.slider-container .slide-content .txt-wrapper span.copy 
+    position: relative
+    text-transform: uppercase
+    width: 2rem
+    display: block
+    font-size: 1rem
+    line-height: 1
+    margin-bottom: 4rem
+    font-weight: 500
+    opacity: 0
+
+.slider-container .slide-content .txt-wrapper h3 
+    margin: 0
+    font-size: 4.3rem
+    margin-bottom: 4rem
+    line-height: 1
+    font-weight: 600
+
+.slider-container .slide-content .txt-wrapper h3 span 
+    display: block
+
+.slider-container .slide-content .txt-wrapper h4 
+    margin: 0
+    font-size: 2rem
+    margin-bottom: 2rem
+    line-height: 1
+    font-weight: 400
+
+.slider-container .slide-content .txt-wrapper h4 span 
+    color: #ccc
+
+.slider-container .slide-content .txt-wrapper a 
+    text-decoration: none
+    color: #AEACAB
+
+.slider-container .slide-conent .txt-wrapper button 
+    position: relative
+    padding: 1rem 3.5rem
+    color: white
+    text-align: center
+    display: block
+    border-radius: 3rem
+    background: #d02e2e
+    text-transform: uppercase
+    border: none
+    font-size: 1rem
+    margin-top: 3rem
+    font-weight: bold
+    outline: none
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3)
+
+.slider-container .slide-content .txt-wrapper .phone 
+    display: block
+    color: black
+    font-size: 1.9rem
+
+.slider-container .slide-content .txt-wrapper .subtitle 
+    display: block
+    text-transform: uppercase
+    color: #AEACAB
+    font-weight: bold
+    letter-spacing: 0.3rem
+    font-size: 1.2rem
+    margin-bottom: 2rem
+
+.slider-container .slide-content .txt-wrapper p.excerpt 
+    margin: 0
+    color: #AEACAB
+    font-size: 1.2rem
+    line-height: 1.5
+    margin-top: 5rem
+    margin-bottom: 3rem
+
+.slider-container .slide-content .txt-wrapper span.view-all 
+    color: #AEACAB
+
+.slider-container .slide-content .txt-wrapper ul 
+    margin: 0
+    padding: 0
+    list-style: none
+    margin-bottom: 1.5rem
+
+.slider-container .slide-content .txt-wrapper ul li 
+    position: relative
+    margin: 1.5rem 0
+    padding: 0
+
+.slider-container .slide-content .txt-wrapper ul li:after 
+    content: ""
+    display: table
+    clear: both
+
+.slider-container .slide-content .txt-wrapper .date-wrapper 
+    width: 20%
+    float: left
+    color: #AEACAB
+    text-align: left
+
+.slider-container .slide-content .txt-wrapper .date-wrapper .date 
+    font-size: 1.7rem
+
+.slider-container .slide-content .txt-wrapper .date-wrapper .month 
+    font-size: 1rem
+
+.slider-container .slide-content .txt-wrapper .post-wrapper 
+    width: 80%
+    float: left
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-title 
+    display: block
+    font-size: 1.4rem
+    line-height: 1.3
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-title a 
+    display: block
+    color: black
+    cursor: pointer
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-title a:hover 
+    text-decoration: underline
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-info 
+    display: block
+    color: #AEACAB
+    font-size: 1rem
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-info:after 
+    content: ""
+    display: table
+    clear: both
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-info ul 
+    margin: 0
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-info li 
+    float: left
+    margin: 0 0.5rem
+
+.slider-container .slide-content .txt-wrapper .post-wrapper .post-info li:first-child 
+    margin-left: 0
+
+.slider-container .slide-content img 
+    width: 100%
+    height: 100%
+    object-fit: cover
+//PortFolio responsive
+.responsive-portfolio
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+.box-portfolio
+    background-color: #f1f1f1
+    width: 90%
+    max-width: 300px
+    text-align: center
+    padding-bottom: 20px
+    margin-bottom: 15%
+    border-radius: 5px
+    box-shadow: 0 0 15px 5px rgba(79, 69, 66, 0.2)
+    &>img
+        width: 100%
+        height: 250px
+        object-fit: cover
+    &>h3
+        padding-top: 5px
+        padding-bottom: 5px
+    &>p
+        padding-top: 5px
+        padding-bottom: 25px
+    &>a
+        text-decoration: none
+        padding: 5px
+        padding-right: 15px
+        padding-left: 15px
+        border-radius: 4px
+        background-color: #dedede
+        box-shadow: 2px 2px 5px 1px rgba(79, 69, 66, 0.2)
+        
+        
+.footer 
+    position: absolute
+    display: block
+    width: 100%
+    height: 6rem
+    bottom: 0
+    left: 0
+    padding: 2rem 4rem
+    z-index: 10
+
+.footer:after 
+    content: ""
+    display: table
+    clear: both
+
+
+.social-wrapper, .language-wrapper 
+    position: relative
+
+.social-wrapper ul, .language-wrapper ul 
+    position: relative
+    list-style: none
+    margin: 0
+    padding: 0
+
+.social-wrapper li, .language-wrapper li 
+    position: relative
+    display: inline-block
+    vertical-align: middle
+    margin: 0 0.5rem
+
+.social-wrapper a, .language-wrapper a 
+    text-decoration: none
+    color: black
+
+
+.social-wrapper 
+    float: left
+
+
+.language-wrapper 
+    float: right
+
+//Clients
+.section-two-clients
+    margin-top: 10%
+.clients-content
+    text-align: center
+    &>img
+        width: 90%
+        max-width: 250px
+        margin-right: 25px
+        margin-top: 30px
+    &>img:last-child
+        margin-right: 0px
+        
+//Contact
+.section-three
+    padding: 0 5%
+    &>div:last-child
+        padding-bottom: 5%
+.section-three-form
+    max-width: 500px
+    float: left
+.section-three-box-one
+    margin-top: 20%
+.section-three-box-two
+    float: right
+.section-three-info
+    &>h3
+        margin-bottom: 15px!important
+.section-three-from>form> input, input, textarea
+    padding: 5px
+    margin-bottom: 10px!important
+    color: #2D2D2D
+    width: 450px
+    border: solid 1px black
+
+.section-three-form>form
+    text-align: center
+//Download
+.footer-download
+    text-align: center
+    background: #ECF0F1
+    padding-top: 4%
+    padding-bottom: 3%
+.section-download>a
+    color: black
+//Soccials
+.footer-social
+    background: #ECF0F1
+    padding-top: 2%
+    padding-bottom: 2%
+.social-container
+    text-align: center
+    &>a
+        text-decoration: none
+        color: black
+        font-size: 2.5em!important 
+        padding: 10px
+        margin-right: 25px
+        &:last-child
+            margin-right: 0px
+//Rights
+.footer-container-rights
+    background-color: #ECF0F1
+.footer-rights
+    padding-top: 2%
+    padding-bottom: 2%
+    text-align: center
+    background: #ECF0F1
+    color: black
+.footer-above
+    padding-top: 3%
+    padding-bottom: 3%
+.scroll-up 
+    display: inline-block
+    width: 10px
+    height: 10px
+    margin: auto
+    transform: rotate(45deg)
+    display: block
+    border-top: 2px solid black
+    border-left: 2px solid black
+    cursor: pointer
+    transition: all .5s
+
+//.section-three-box-two
+     text-align: center
+     float: unset
+//.section-three>div:last-child
+        padding-bottom: 10%
+//.footer-download
+        padding-top: 10%
+        padding-bottom: 10%
+//.footer-above
+        padding-top: 5%
+        padding-bottom: 5%
+//.footer-rights
+        padding-top: 3%
+        padding-bottom: 3%
+//.section-three-box-one
+        margin-top: 15%
+        margin-bottom: 15%
+//.section-three-from
+        max-width: 100%
+        float: unset
+
+//Display Size
+@media (min-width: 64em) 
+    header 
+        background-position-y: -8vw
+@media screen and (max-width: 300px)
+    .section-download>a
+        letter-spacing: inherit
+@media screen and (max-width: 768px)
+    html
+        width: 100%
+    body
+        overflow-x: hidden
+    form 
+        margin: auto
+        max-width: inherit
+    .section-three-form
+        margin: auto    
+    form>input,form>textarea    
+        width: 100%
+    .section-container-vid
+        height: inherit
+        top: inherit
+        padding-top: 65px
+        background: #fff
+    .container-vid
+        top: inherit
+        height: inherit
+        position: inherit
+        width: 100%
+        transform: none!important
+    svg.intro
+        position: absolute
+        top: 60%
+    .container-vid-shade
+        height: inherit
+        position: inherit
+        top: inherit
+        
+    div#about 
+        width: 100%
+    .section-one h2, .section-two h2, .container > h2,.section-three>h2
+        padding-top: 15%!important
+        padding-bottom: 15%!important
+        font-size: 2.2em!important 
+    .skills
+        display: flex
+        flex-wrap: wrap-reverse
+    .skill-right
+        padding-bottom: 20%
+    .skill-right p
+        font-size: 1.1em
+    .skill-left
+        margin: auto
+    .skill-column
+        display: flex
+        flex-wrap: wrap
+    .skill-columns
+        width: 100%
+        margin-bottom: 20%
+    .slider-content
+        display: none
+    .clients-content>img
+        margin-right: inherit
+    .section-three-form
+        float: inherit
+    .section-three-box-two
+        margin-top: 25%
+        float: inherit
+    .footer-download
+        padding-top: 20%
+        padding-bottom: 20%
+    .footer-social
+        padding-top: 5%
+        padding-bottom: 5%
+    .social-container>a
+        font-size: 2.3em !important
+    .footer-above
+        padding-top: 15%
+        padding-bottom: 15%
+    .footer-rights
+        padding-top: 5%
+        padding-bottom: 5%
+  
+@media screen and (min-width: 769px) 
+    .hideme
+        opacity: 1
+    #about h2, #skills h2, #portfolio h2, .container > h2,.section-three>h2
+        font-size: 2.0em
+    .clients-content>img
+        margin-right: 25px    
+    .skill-right p 
+        font-size: 1.2em
+    .responsive-portfolio
+        display: none
+    .footer-download
+        padding-top: 10%
+        padding-bottom: 10%
+    .footer-above
+        padding-top: 5%
+        padding-bottom: 5%
+  
+@media screen and (min-width: 1000px)
+    .hideme
+        opacity: 0
+    .section-one,.section-two,.section-three    
+        max-width: 1000px!important
+        margin-bottom: 10%
+    #about h2, .section-two h2,  .container > h2,.section-three>h2
+        padding-top: 5%
+        padding-bottom: 2%
+    .skill-right p 
+        font-size: 1.24em
+        line-height: 1.5em
+        padding-bottom: 0
+    #about img 
+        margin-top: 5%!important
+        width: 30%
+        margin: auto
+        margin-bottom: 10%
+    .skills
+        padding: 0
+        justify-content: space-around
+    .skill-left, .skill-right 
+        display: inline-block
+        width: 45%
+        padding-right: 5%
+        text-align: left
+        font-size: .8em
+    .skill-right 
+        padding-right: 0
+        padding-left: 5%
+        position: relative
+        vertical-align: top
+    .slider-container .slide-content .txt-wrapper h3
+        font-size: 3.3rem
+    #port
+        margin: 15% 0
+    #footer 
+        padding-bottom: 2.5%
+        
+@media screen and (min-width: 1500px) 
+    .hideme
+        opacity: 0
+    .section-one,.section-two,.section-three    
+        max-width: 1500px!important    
+    #footer, .footer-rights
+        padding-bottom: 2%
