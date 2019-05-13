@@ -1,0 +1,6 @@
+
+# PRODUCTION FOLDER
+/build
+
+# DEPENDENCIES FOLDER
+/node_modules
