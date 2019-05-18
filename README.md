@@ -1,7 +1,3 @@
-    <!-- // "webpack": "^4.31.0", -->
-    <!-- "webpack-dev-server": "^3.3.1" -->
-    <!-- "webpack-cli": "^3.3.2", -->
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
