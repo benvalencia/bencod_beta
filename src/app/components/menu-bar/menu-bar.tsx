@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './menu-bar.sass';
+import logo from 'assets/images/logo.svg';
+import './menu-bar.scss';
 
 interface IMenuBar {
     id: number,
@@ -18,7 +19,7 @@ class MenuBar extends Component {
         <div className="menu-bar">
           <header className="menu-bar-container">
             <div className='menu-bar-container-image'>
-                <img src='src/assets/images/image-placeholder.png' alt="Bencod's Logo"/>
+                <img src={logo} alt="Bencod's Logo"/>
             </div>
             <div className='menu-bar-container-nav'>
                 <div>

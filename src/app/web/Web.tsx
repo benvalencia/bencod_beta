@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../../assets/images/logo.svg';
-import './App.sass';
+import './Web.scss';
 import MenuBar from '../components/menu-bar/menu-bar';
 
-
-
-class App extends Component {
+class Web extends Component {
   state = {
     menuTabs : [
       {
@@ -29,6 +26,7 @@ class App extends Component {
   render() {
     return (
       <div className="bencod">
+        
         {/* menuTabs={this.state.menuTabs} */}
         <MenuBar />
       </div>
@@ -36,4 +34,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Web;
