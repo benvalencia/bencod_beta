@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Web from './web/Web'
+import WebPage from './web/Web';
+import ErrorPage from './error/Error';
 import Login from './login/Login'
 
 class App extends Component {
@@ -9,9 +10,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-        <Route exact path="/" component={Web} />
+        <Route exact path="/" component={WebPage} />
         <Route exact path="/login" component={Login} />
-        <Route component={Web} />
+        <Route component={ErrorPage} />
         </Switch>
       </BrowserRouter>
     );
