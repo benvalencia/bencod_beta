@@ -5,16 +5,16 @@ const reactCli =
     component: {
       tsx: 'src/app/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
       test: 'src/app/components/{{pascalCase name}}/{{pascalCase name}}.test.tsx',
-      scss: 'src/app/components/{{pascalCase name}}/{{pascalCase name}}.module.scss',
+      scss: 'src/app/components/{{pascalCase name}}/{{pascalCase name}}.scss',
       main: 'src/app/components/{{pascalCase name}}/index.tsx',
       index: 'src/app/components/index.tsx',
     },
-    page: {
-      tsx: 'src/app/pages/{{pascalCase name}}/{{pascalCase name}}.tsx',
-      test: 'src/app/pages/{{pascalCase name}}/{{pascalCase name}}.test.tsx',
-      scss: 'src/app/pages/{{pascalCase name}}/{{pascalCase name}}.module.scss',
-      main: 'src/pages/{{pascalCase name}}/index.tsx',
-      index: 'src/app/pages/index.tsx',
+    view: {
+      tsx: 'src/app/views/{{pascalCase name}}/{{pascalCase name}}.tsx',
+      test: 'src/app/views/{{pascalCase name}}/{{pascalCase name}}.test.tsx',
+      scss: 'src/app/views/{{pascalCase name}}/{{pascalCase name}}.scss',
+      main: 'src/app/views/{{pascalCase name}}/index.tsx',
+      index: 'src/app/views/index.tsx',
     },
     service: {
       tsx: 'src/services/{{camelCase name}}.tsx',
@@ -30,26 +30,29 @@ const reactCli =
   reactCli: {
     root: 'react_cli',
     component: {
-      index: 'react_cli/components/index.tsx.hbs',
+      index: 'react_cli/component/index.tsx.hbs',
       class: {
-        tsx: 'react_cli/components/classComponent/classComponent.ts.hbs',
-        test: 'react_cli/components/classComponent/classComponent.test.ts.hbs',
-        scss: 'react_cli/components/classComponent/classComponent.module.scss.hbs',
+        tsx: 'react_cli/components/classComponent/classComponent.tsx.hbs',
+        test: 'react_cli/components/classComponent/classComponent.test.tsx.hbs',
+        scss: 'react_cli/components/classComponent/classComponent.scss.hbs',
         main: 'react_cli/components/classComponent/main.tsx.hbs',
       },
       function: {
         tsx: 'react_cli/components/functionComponent/functionComponent.tsx.hbs',
         test: 'react_cli/components/functionComponent/functionComponent.test.tsx.hbs',
-        scss: 'react_cli/components/functionComponent/functionComponent.module.scss.hbs',
+        scss: 'react_cli/components/functionComponent/functionComponent.scss.hbs',
         main: 'react_cli/components/functionComponent/main.tsx.hbs',
       },
-      base: {
-        tsx: 'react_cli/components/Component.tsx.hbs',
-        test: 'react_cli/components/Component.test.tsx.hbs',
-        scss: 'react_cli/components/Component.module.scss.hbs',
+    },
+    view: {
+      index: 'react_cli/view/index.tsx.hbs',
+      content: {
+        tsx: 'react_cli/components/classComponent/classComponent.tsx.hbs',
+        test: 'react_cli/components/classComponent/classComponent.test.tsx.hbs',
+        scss: 'react_cli/components/classComponent/classComponent.scss.hbs',
+        main: 'react_cli/components/classComponent/main.tsx.hbs',
       },
     },
-    page: 'react_cli/pages',
     service: 'react_cli/services',
     hook: 'react_cli/hooks',
   },
@@ -59,7 +62,7 @@ const reactCli =
 module.exports = plop => {
   // COMPONENTS
   plop.setGenerator('function component', {
-    // FUNCTION COMPONENT
+    // TYPE: FUNCTION COMPONENT
     description: 'Create a reusable function component',
       prompts: [
         {
@@ -109,8 +112,8 @@ module.exports = plop => {
         },
       ],
     })
-    plop.setGenerator('class component', {
-      // CLASS COMPONENT
+    plop.setGenerator('component', {
+      // TYPE: CLASS COMPONENT
       description: 'Create a reusable class component',
       prompts: [
         {
@@ -149,66 +152,63 @@ module.exports = plop => {
         {
           type: 'append',
           path: reactCli.baseApp.component.index,
-          pattern: `/* PLOP_INJECT_IMPORT */`,
+          pattern: `/* REACT_INJECT_IMPORT */`,
           template: `import {{pascalCase name}} from './{{pascalCase name}}';`,
         },
         {
           type: 'append',
           path: reactCli.baseApp.component.index,
-          pattern: `/* PLOP_INJECT_EXPORT */`,
+          pattern: `/* REACT_INJECT_EXPORT */`,
           template: `\t{{pascalCase name}},`,
         },
       ],
     })
-    // PAGES
-    plop.setGenerator('page', {
-      description: 'Create a page',
+    // VIEWS
+    plop.setGenerator('view', {
+      description: 'Create a view',
       prompts: [
         {
           type: 'input',
           name: 'name',
-          message: 'What is your page name?',
+          message: 'What is your view name?',
         },
       ],
       actions: [
         {
           type: 'add',
-          path: reactCli.baseApp.page.tsx,
-          templateFile:
-            'plop-templates/Page/Page.js.hbs',
+          path: reactCli.baseApp.view.tsx,
+          templateFile: reactCli.reactCli.view.content.tsx,
         },
         {
           type: 'add',
-          path: reactCli.baseApp.page.test,
-          templateFile:
-            'plop-templates/Page/Page.test.js.hbs',
+          path: reactCli.baseApp.view.test,
+          templateFile: reactCli.reactCli.view.content.test,
         },
         {
           type: 'add',
-          path: reactCli.baseApp.page.scss,
-          templateFile:
-            'plop-templates/Page/Page.module.css.hbs',
+          path: reactCli.baseApp.view.scss,
+          templateFile: reactCli.reactCli.view.content.scss,
         },
         {
           type: 'add',
-          path: reactCli.baseApp.page.main,
-          templateFile: 'plop-templates/Page/index.js.hbs',
+          path: reactCli.baseApp.view.main,
+          templateFile: reactCli.reactCli.view.content.main,
         },
         {
           type: 'add',
-          path: reactCli.baseApp.page.index,
-          templateFile: 'plop-templates/injectable-index.js.hbs',
+          path: reactCli.baseApp.view.index,
+          templateFile: reactCli.reactCli.view.index,
           skipIfExists: true,
         },
         {
           type: 'append',
-          path: reactCli.baseApp.page.index,
+          path: reactCli.baseApp.view.index,
           pattern: `/* PLOP_INJECT_IMPORT */`,
           template: `import {{pascalCase name}} from './{{pascalCase name}}';`,
         },
         {
           type: 'append',
-          path: reactCli.baseApp.page.index,
+          path: reactCli.baseApp.view.index,
           pattern: `/* PLOP_INJECT_EXPORT */`,
           template: `\t{{pascalCase name}},`,
         },

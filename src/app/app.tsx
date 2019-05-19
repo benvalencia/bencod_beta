@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import WebPage from './web/Web';
-import ErrorPage from './error/Error';
-import Login from './login/Login'
+import WebPage from './views/web/Web';
+import ErrorPage from './views/error/Error';
+import Login from './views/login/Login'
 
 class App extends Component {
   render() {

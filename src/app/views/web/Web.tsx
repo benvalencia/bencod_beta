@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import MenuBar from '../components/menu-bar/menu-bar';
+import './Web.scss';
+import MenuBar from '../../components/menu-bar/menu-bar';
 
-class ErrorPage extends Component {
+class Web extends Component {
   state = {
     menuTabs : [
       {
@@ -33,4 +34,4 @@ class ErrorPage extends Component {
   }
 }
 
-export default ErrorPage;
+export default Web;
