@@ -21,15 +21,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    // "jsx": "preserve",
     "removeComments": true,
-    "jsx": "react",
-    "baseUrl": "./",
-    "paths": {
-      "components/*": [
-        "src/app/*"
-      ],
-    }
+    "jsx": "preserve"
   },
   "include": [
     "src"
